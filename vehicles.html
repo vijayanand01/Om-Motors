@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="assets/images/favicon.ico">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+
+    <title>Om Motors</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="assets/css/fontawesome.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/owl.css">
+
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .container-flex {
+            flex: 1;
+        }
+
+        footer {
+            background: #f8f9fa;
+            padding: 10px 0; /* Reduced padding */
+            text-align: center;
+            font-size: 14px; /* Adjust font size if needed */
+        }
+
+        .card {
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .card-image {
+            flex: 1;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card-image img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .card-details {
+            padding: 15px;
+            background: #fff;
+        }
+
+        .card-title {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .card-text {
+            font-size: 14px;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        .card-text strong {
+            font-weight: 600;
+            margin-right: 5px;
+        }
+
+        .no-image {
+            background-color: #f1f1f1;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 200px; /* Adjust height as needed */
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Preloader Start -->
+    <div id="preloader">
+        <div class="jumper">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <!-- Preloader End -->
+
+    <!-- Header -->
+    <header class="" style="position: relative;">
+        <nav class="navbar navbar-expand-lg">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">
+                    <h2>OM<em> Motors</em></h2>
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                    aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="index.html">Home
+                                <span class="sr-only">(current)</span>
+                            </a>
+                        </li>
+                        <li class="nav-item"><a class="nav-link" href="vehicles.html">Vehicles</a></li>
+                        <li class="nav-item"><a class="nav-link" href="add_vehicle.html">Add Vehicle</a></li>
+                        <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container-flex mt-5">
+        <div class="container">
+            <h2 class="text-center mb-4">Vehicle Information</h2>
+            <div id="vehicleCards" class="card-columns"></div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="vehicleModal" tabindex="-1" aria-labelledby="vehicleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="vehicleModalLabel">Vehicle Details</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <img id="vehicleImage" src="" class="img-fluid mb-3" alt="Vehicle Image">
+                    <div class="modal-details">
+                        <p><strong>Title:</strong> <span id="modalTitle"></span></p>
+                        <p><strong>Registration Number:</strong> <span id="modalRegno"></span></p>
+                        <p><strong>Engine Number:</strong> <span id="modalEngno"></span></p>
+                        <p><strong>Chassis Number:</strong> <span id="modalChassisno"></span></p>
+                        <p><strong>Make:</strong> <span id="modalMake"></span></p>
+                        <p><strong>Model:</strong> <span id="modalModel"></span></p>
+                        <p><strong>Year:</strong> <span id="modalYear"></span></p>
+                        <p><strong>Color:</strong> <span id="modalColor"></span></p>
+                        <p><strong>Owner:</strong> <span id="modalOwner"></span></p>
+                        <p><strong>Fuel Type:</strong> <span id="modalFuel"></span></p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="inner-content">
+                        <p>Copyright © 2024 Ommotors - Designed by: <a href="https://www.instagram.com/vijayanand_01" target="_blank">Vijayanand</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Additional Scripts -->
+    <script src="assets/js/custom.js"></script>
+    <script src="assets/js/owl.js"></script>
+    <script>
+       document.addEventListener("DOMContentLoaded", function() {
+    fetch('fetch_vehicles.php')
+        .then(response => response.json())
+        .then(data => {
+            let cards = '';
+            data.forEach(vehicle => {
+                let imageSrc = vehicle.photo ? vehicle.photo : 'path_to_default_image.jpg';
+                let imageContainer = vehicle.photo ? `<img src="${imageSrc}" class="card-img-top" alt="Vehicle Image">` : '<div class="no-image">No Image Available</div>';
+                cards += `
+                    <div class="card mb-4" data-toggle="modal" data-target="#vehicleModal" data-vehicle='${JSON.stringify(vehicle)}'>
+                        <div class="card-image">
+                            ${imageContainer}
+                        </div>
+                        <div class="card-details">
+                            <h5 class="card-title">${vehicle.title}</h5>
+                            <p class="card-text">
+                                <strong>Registration Number:</strong> ${vehicle.regno}<br>
+                                <strong>Make:</strong> ${vehicle.make}
+                            </p>
+                        </div>
+                    </div>
+                `;
+            });
+            document.getElementById('vehicleCards').innerHTML = cards;
+        })
+        .catch(error => console.error('Error:', error));
+});
+
+
+        $('#vehicleModal').on('show.bs.modal', function(event) {
+            var button = $(event.relatedTarget); // Button that triggered the modal
+            var vehicle = button.data('vehicle'); // Extract info from data-* attributes
+
+            var modal = $(this);
+            modal.find('.modal-title').text(vehicle.title);
+            modal.find('#vehicleImage').attr('src', vehicle.photo); // Use vehicle.photo for modal image source
+            modal.find('#modalTitle').text(vehicle.title);
+            modal.find('#modalRegno').text(vehicle.regno);
+            modal.find('#modalEngno').text(vehicle.engno);
+            modal.find('#modalChassisno').text(vehicle.chassisno);
+            modal.find('#modalMake').text(vehicle.make);
+            modal.find('#modalModel').text(vehicle.model);
+            modal.find('#modalYear').text(vehicle.year);
+            modal.find('#modalColor').text(vehicle.color);
+            modal.find('#modalOwner').text(vehicle.owner);
+            modal.find('#modalFuel').text(vehicle.fuel);
+        });
+
+    </script>
+</body>
+
+</html>
+    
